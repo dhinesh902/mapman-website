@@ -657,10 +657,29 @@ select.form-control {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Enhanced Responsiveness */
+/* Elite Responsiveness & Fluidity */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 5vw, 4rem);
+}
+
+section {
+  padding: clamp(5rem, 10vw, 10rem) 0;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 4.2rem);
+}
+
+.section-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+}
+
 @media (max-width: 1024px) {
   .hero-section {
-    padding: 8rem 0;
+    padding-top: 10rem;
     text-align: center;
   }
 
@@ -669,23 +688,15 @@ select.form-control {
   }
 
   .hero-visual-root {
-    margin-top: 5rem;
+    margin-top: 4rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  /* Adjust overlays for tablet */
-  .hero-overlay-card {
-    min-width: 180px;
-    padding: 1rem;
-  }
-
-  .card-top-right {
-    top: -1.5rem;
-    right: 0;
-  }
-
-  .card-bottom-left {
-    bottom: 0;
-    left: 0;
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 4rem;
   }
 }
 
@@ -695,60 +706,22 @@ select.form-control {
   }
 
   .section-header {
+    text-align: center;
     margin-bottom: 4rem;
   }
 
-  .section-title {
-    font-size: 2.75rem;
-    margin-bottom: 1rem;
-  }
-
   .section-subtitle {
-    font-size: 1.1rem;
-  }
-
-  .hero-title {
-    font-size: 3rem;
-  }
-
-  .hero-description {
-    font-size: 1.15rem;
-  }
-
-  /* Simplify visuals on mobile */
-  .card-bottom-left {
-    display: none;
-  }
-
-  .hero-image-wrapper {
-    max-width: 100%;
-  }
-
-  .modal-content {
-    padding: 2.5rem 1.5rem;
-    width: 95%;
-  }
-
-  .modal-content h2 {
-    font-size: 1.75rem;
-  }
-
-  .whatsapp-float {
-    bottom: 1.5rem;
-    right: 1.5rem;
-    width: 3.25rem;
-    height: 3.25rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-overlay-card {
+    min-width: 150px;
+    padding: 0.85rem;
+  }
+
+  .card-bottom-left {
     display: none;
-    /* Hide heavy overlays on tiny screens */
   }
 
   .btn {
@@ -756,9 +729,35 @@ select.form-control {
     justify-content: center;
   }
 
-  .nav-content {
-    padding: 0 1rem;
+  .navbar {
+    padding: 1rem 0;
   }
+
+  .mobile-menu {
+    top: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+/* Navbar Scrolled State enhancement */
+.scrolled {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(15px) saturate(180%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 0.75rem 0;
 }
 
 /* Animations Refinement */
