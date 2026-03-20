@@ -22,7 +22,7 @@ const About = () => {
     ];
 
     return (
-        <section id="about" style={{ padding: '10rem 0', background: 'var(--bg-surface)' }}>
+        <section id="about" style={{ padding: '8rem 0', background: 'var(--bg-surface)' }}>
             <div className="container">
                 <div className="section-header">
                     <span className="badge">Digital Excellence Philosophy</span>
@@ -41,13 +41,13 @@ const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: i * 0.15 }}
-                            style={{ textAlign: 'center', padding: '3.5rem 2.5rem' }}
+                            style={{ textAlign: 'left', padding: '3rem 2.5rem' }}
                         >
-                            <div className="icon-box" style={{ margin: '0 auto 2rem', width: '56px', height: '56px', borderRadius: '14px' }}>
+                            <div className="icon-box" style={{ margin: '0 0 2rem', width: '50px', height: '50px', borderRadius: '12px' }}>
                                 {f.icon}
                             </div>
-                            <h3 style={{ marginBottom: '1.25rem', fontSize: '1.5rem', fontWeight: 800 }}>{f.title}</h3>
-                            <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.7' }}>{f.desc}</p>
+                            <h3 style={{ marginBottom: '1rem', fontSize: '1.25rem', fontWeight: 700 }}>{f.title}</h3>
+                            <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.6' }}>{f.desc}</p>
                         </motion.div>
                     ))}
                 </div>

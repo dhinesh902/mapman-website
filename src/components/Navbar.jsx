@@ -35,7 +35,6 @@ const Navbar = () => {
   ];
 
   const handleLinkClick = (e, href) => {
-    // For mobile menu, we close first then allow the natural scroll
     setMobileMenuOpen(false);
   };
 
@@ -48,16 +47,16 @@ const Navbar = () => {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
             <div className="logo-dot" style={{
               width: '10px',
               height: '10px',
-              background: 'var(--peach-gradient)',
-              borderRadius: '50%',
-              boxShadow: '0 0 10px rgba(255, 106, 136, 0.4)'
+              background: 'var(--primary)',
+              borderRadius: '2px',
+              boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
             }}></div>
-            <span style={{ letterSpacing: '-0.02em', fontWeight: 600 }}>Pafagel</span>
-            <span className="text-gradient" style={{ fontWeight: 800 }}>Software</span>
+            <span style={{ fontWeight: 800 }}>Pafagel Software Solutions</span>
+            {/* <span style={{ opacity: 0.5, fontWeight: 400 }}>Website</span> */}
           </div>
         </motion.a>
 
@@ -99,16 +98,18 @@ const Navbar = () => {
             className="btn btn-primary"
             style={{
               padding: '0.65rem 1.75rem',
-              fontSize: '0.85rem',
+              fontSize: '0.8rem',
               marginLeft: '0.5rem',
-              borderRadius: 'var(--radius-full)'
+              borderRadius: '30px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em'
             }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4 }}
           >
-            Get Started
-            <ArrowRight size={16} />
+            Start Project
+            <ArrowRight size={14} />
           </motion.a>
         </div>
 
@@ -121,7 +122,7 @@ const Navbar = () => {
           <div className="toggle-icon-wrapper" style={{
             background: 'var(--primary-light)',
             padding: '0.5rem',
-            borderRadius: '12px',
+            borderRadius: '4px',
             color: 'var(--primary)',
             display: 'flex',
             alignItems: 'center',
@@ -136,14 +137,13 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20, height: 0 }}
-            animate={{ opacity: 1, y: 0, height: 'auto' }}
-            exit={{ opacity: 0, y: -20, height: 0 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             className="mobile-menu"
-            style={{ borderRadius: '0 0 24px 24px', margin: '0 1rem', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}
           >
-            <div className="mobile-nav-links" style={{ padding: '2rem 1.5rem' }}>
+            <div className="mobile-nav-links" style={{ padding: '2rem' }}>
               {navLinks.map((link, index) => (
                 <motion.a
                   key={link.name}
@@ -157,25 +157,26 @@ const Navbar = () => {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    padding: '1.25rem 1rem',
-                    borderBottom: index === navLinks.length - 1 ? 'none' : '1px solid rgba(0,0,0,0.05)',
+                    padding: '1.25rem 0',
+                    borderBottom: index === navLinks.length - 1 ? 'none' : '1px solid var(--border-color)',
                     color: 'var(--text-main)',
-                    fontWeight: 600,
-                    textDecoration: 'none'
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    fontFamily: 'var(--font-heading)'
                   }}
                 >
                   {link.name}
-                  <ArrowRight size={18} className="text-light" style={{ opacity: 0.3 }} />
+                  <ArrowRight size={18} style={{ opacity: 0.3 }} />
                 </motion.a>
               ))}
-              <div style={{ marginTop: '1.5rem', padding: '0 1rem' }}>
+              <div style={{ marginTop: '2rem' }}>
                 <a
                   href="#contact"
                   className="btn btn-primary"
                   onClick={() => setMobileMenuOpen(false)}
-                  style={{ width: '100%', borderRadius: '16px' }}
+                  style={{ width: '100%', borderRadius: '4px', padding: '1.25rem' }}
                 >
-                  Get Started
+                  Start Project
                 </a>
               </div>
             </div>
@@ -185,7 +186,6 @@ const Navbar = () => {
     </nav>
   );
 };
-
 
 export default Navbar;
 
