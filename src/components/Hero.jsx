@@ -11,7 +11,20 @@ import {
 
 const Hero = () => {
   return (
-    <section id="hero" className="hero-section">
+    <section id="hero" className="hero-section" style={{ position: 'relative' }}>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          width: "600px",
+          height: "600px",
+          background: "radial-gradient(circle at top right, var(--bg-surface), transparent 70%)",
+          zIndex: 0,
+          pointerEvents: "none",
+          opacity: 0.6
+        }}
+      />
       <div className="bg-orb orb-1"></div>
       <div className="bg-orb orb-2"></div>
 
@@ -106,7 +119,7 @@ const Hero = () => {
             className="hero-visual-root"
           >
             {/* Main Image Layer */}
-            <div className="hero-image-wrapper animate-float">
+            <div className="hero-image-wrapper animate-float" style={{ maxWidth: '480px' }}>
               <img
                 src="/assets/hero-visual.png"
                 alt="Abstract Digital Ecosystem"

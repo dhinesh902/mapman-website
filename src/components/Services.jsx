@@ -100,179 +100,149 @@ const Services = () => {
 
         <div className="grid grid-3" style={{ gap: "2rem" }}>
           {services.map((service, index) => (
-            <motion.div
+            <div
               key={service.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              onClick={() => setSelectedService(service)}
-              className="card service-card"
-              whileHover={{ y: -10 }}
-              style={{
-                cursor: "pointer",
-                position: "relative",
-                overflow: "hidden",
-                padding: "3.5rem 2.5rem",
-              }}
+              style={{ perspective: "1000px", height: "400px" }}
             >
-              <div
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => setSelectedService(selectedService === service.id ? null : service.id)}
                 style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: "4px",
-                  background: "var(--primary-gradient)",
+                  cursor: "pointer",
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                  transformStyle: "preserve-3d",
                 }}
-              ></div>
+                animate={{ rotateY: selectedService === service.id ? 180 : 0 }}
+              >
+                {/* Front Side */}
+                <div
+                  className="card service-card"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    backfaceVisibility: "hidden",
+                    display: "flex",
+                    flexDirection: "column",
+                    padding: "3.5rem 2.5rem",
+                    margin: 0,
+                    overflow: "hidden"
+                  }}
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: "4px",
+                      background: "var(--primary-gradient)",
+                    }}
+                  ></div>
 
-              <div
-                className="icon-box"
-                style={{
-                  width: "48px",
-                  height: "48px",
-                  borderRadius: "4px",
-                  marginBottom: "2rem",
-                }}
-              >
-                {service.icon}
-              </div>
-              <h3
-                style={{
-                  marginBottom: "1.25rem",
-                  fontSize: "1.4rem",
-                  fontWeight: 700,
-                }}
-              >
-                {service.title}
-              </h3>
-              <p
-                style={{
-                  color: "var(--text-muted)",
-                  lineHeight: "1.7",
-                  fontSize: "1rem",
-                }}
-              >
-                {service.blurb}
-              </p>
+                  <div
+                    className="icon-box"
+                    style={{
+                      width: "48px",
+                      height: "48px",
+                      borderRadius: "4px",
+                      marginBottom: "2rem",
+                    }}
+                  >
+                    {service.icon}
+                  </div>
+                  <h3
+                    style={{
+                      marginBottom: "1.25rem",
+                      fontSize: "1.4rem",
+                      fontWeight: 700,
+                    }}
+                  >
+                    {service.title}
+                  </h3>
+                  <p
+                    style={{
+                      color: "var(--text-muted)",
+                      lineHeight: "1.7",
+                      fontSize: "1rem",
+                    }}
+                  >
+                    {service.blurb}
+                  </p>
 
-              <div
-                style={{
-                  marginTop: "2.5rem",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  fontWeight: 800,
-                  color: "var(--primary)",
-                  fontSize: "0.75rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                }}
-              >
-                Learn more <ChevronRight size={14} />
-              </div>
-            </motion.div>
+                  <div
+                    style={{
+                      marginTop: "auto",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                      fontWeight: 800,
+                      color: "var(--primary)",
+                      fontSize: "0.75rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.1em",
+                    }}
+                  >
+                    Learn more <ChevronRight size={14} />
+                  </div>
+                </div>
+
+                {/* Back Side */}
+                <div
+                  className="card"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    backfaceVisibility: "hidden",
+                    transform: "rotateY(180deg)",
+                    background: "var(--primary-gradient)",
+                    color: "white",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    padding: "3rem",
+                    border: "none",
+                    margin: 0,
+                    boxShadow: "0 20px 40px rgba(33, 99, 246, 0.2)"
+                  }}
+                >
+                  <h3 style={{
+                    color: "white",
+                    marginBottom: "1.5rem",
+                    fontSize: "1.5rem",
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 800
+                  }}>
+                    {service.title}
+                  </h3>
+                  <p style={{
+                    color: "rgba(255,255,255,0.95)",
+                    lineHeight: "1.8",
+                    fontSize: "1.05rem",
+                    fontFamily: "var(--font-main)"
+                  }}>
+                    {service.detail}
+                  </p>
+                  <div style={{
+                    marginTop: "2.5rem",
+                    fontSize: "0.8rem",
+                    fontWeight: 800,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    opacity: 0.7
+                  }}>
+                    Click to flip back &larr;
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           ))}
         </div>
       </div>
-
-      <AnimatePresence>
-        {selectedService && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="modal-overlay"
-            onClick={() => setSelectedService(null)}
-            style={{
-              backdropFilter: "blur(16px)",
-              zIndex: 3000,
-              background: "rgba(0,0,0,0.4)",
-            }}
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              className="modal-content"
-              onClick={(e) => e.stopPropagation()}
-              style={{
-                padding: "3rem 2.5rem",
-                borderRadius: "var(--radius-lg)",
-                maxWidth: "480px",
-              }}
-            >
-              <button
-                onClick={() => setSelectedService(null)}
-                style={{
-                  position: "absolute",
-                  top: "1.5rem",
-                  right: "1.5rem",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  color: "var(--text-muted)",
-                  padding: "0.5rem",
-                }}
-              >
-                <X size={24} />
-              </button>
-
-              <div
-                className="icon-box"
-                style={{
-                  width: "56px",
-                  height: "56px",
-                  borderRadius: "8px",
-                  marginBottom: "2rem",
-                }}
-              >
-                {selectedService.icon}
-              </div>
-
-              <h2
-                style={{
-                  fontSize: "1.75rem",
-                  marginBottom: "1.25rem",
-                  fontWeight: 800,
-                  fontFamily: "var(--font-heading)",
-                }}
-              >
-                {selectedService.title}
-              </h2>
-              <p
-                style={{
-                  fontSize: "1rem",
-                  color: "var(--text-main)",
-                  fontStyle: "italic",
-                  marginBottom: "2rem",
-                  borderLeft: "3px solid var(--secondary)",
-                  paddingLeft: "1.25rem",
-                }}
-              >
-                {selectedService.blurb}
-              </p>
-              <p
-                style={{
-                  fontSize: "1rem",
-                  color: "var(--text-muted)",
-                  lineHeight: "1.8",
-                }}
-              >
-                {selectedService.detail}
-              </p>
-
-              <button
-                className="btn btn-primary"
-                style={{ marginTop: "2.5rem", width: "100%", padding: "1rem" }}
-              >
-                Discuss Your Project
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 };

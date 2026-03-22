@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
-import { Menu, X, ArrowRight } from 'lucide-react';
-import './Navbar.css';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { Menu, X, ArrowRight } from "lucide-react";
+import "./Navbar.css";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -19,19 +19,19 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Product', href: '#product' },
-    { name: 'Contact', href: '#contact' }
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Product", href: "#product" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const handleLinkClick = (e, href) => {
@@ -39,7 +39,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="container nav-content">
         <motion.a
           href="#"
@@ -47,14 +47,17 @@ const Navbar = () => {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-            <div className="logo-dot" style={{
-              width: '10px',
-              height: '10px',
-              background: 'var(--primary)',
-              borderRadius: '2px',
-              boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
-            }}></div>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+            <div
+              className="logo-dot"
+              style={{
+                width: "10px",
+                height: "10px",
+                background: "var(--primary)",
+                borderRadius: "2px",
+                boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+              }}
+            ></div>
             <span style={{ fontWeight: 800 }}>Pafagel Software Solutions</span>
             {/* <span style={{ opacity: 0.5, fontWeight: 400 }}>Website</span> */}
           </div>
@@ -97,12 +100,12 @@ const Navbar = () => {
             href="#contact"
             className="btn btn-primary"
             style={{
-              padding: '0.65rem 1.75rem',
-              fontSize: '0.8rem',
-              marginLeft: '0.5rem',
-              borderRadius: '30px',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em'
+              padding: "0.65rem 1.75rem",
+              fontSize: "0.8rem",
+              marginLeft: "0.5rem",
+              borderRadius: "30px",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
             }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -119,15 +122,18 @@ const Navbar = () => {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
-          <div className="toggle-icon-wrapper" style={{
-            background: 'var(--primary-light)',
-            padding: '0.5rem',
-            borderRadius: '4px',
-            color: 'var(--primary)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}>
+          <div
+            className="toggle-icon-wrapper"
+            style={{
+              background: "var(--primary-light)",
+              padding: "0.5rem",
+              borderRadius: "4px",
+              color: "var(--primary)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </div>
         </button>
@@ -140,10 +146,10 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
             className="mobile-menu"
           >
-            <div className="mobile-nav-links" style={{ padding: '2rem' }}>
+            <div className="mobile-nav-links" style={{ padding: "2rem" }}>
               {navLinks.map((link, index) => (
                 <motion.a
                   key={link.name}
@@ -154,27 +160,34 @@ const Navbar = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                   style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    padding: '1.25rem 0',
-                    borderBottom: index === navLinks.length - 1 ? 'none' : '1px solid var(--border-color)',
-                    color: 'var(--text-main)',
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    padding: "1.25rem 0",
+                    borderBottom:
+                      index === navLinks.length - 1
+                        ? "none"
+                        : "1px solid var(--border-color)",
+                    color: "var(--text-main)",
                     fontWeight: 700,
-                    textDecoration: 'none',
-                    fontFamily: 'var(--font-heading)'
+                    textDecoration: "none",
+                    fontFamily: "var(--font-heading)",
                   }}
                 >
                   {link.name}
                   <ArrowRight size={18} style={{ opacity: 0.3 }} />
                 </motion.a>
               ))}
-              <div style={{ marginTop: '2rem' }}>
+              <div style={{ marginTop: "2rem" }}>
                 <a
                   href="#contact"
                   className="btn btn-primary"
                   onClick={() => setMobileMenuOpen(false)}
-                  style={{ width: '100%', borderRadius: '4px', padding: '1.25rem' }}
+                  style={{
+                    width: "100%",
+                    borderRadius: "4px",
+                    color:"white"
+                  }}
                 >
                   Start Project
                 </a>
@@ -188,4 +201,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
